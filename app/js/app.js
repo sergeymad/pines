@@ -1,8 +1,8 @@
 // // Import vendor jQuery plugin example
-// import '~/app/libs/mmenu/dist/mmenu.js'
+import '~/app/libs/jquery/jquery.js'
 
 document.addEventListener('DOMContentLoaded', () => {
 
-	// Custom JS
+	$(".first_screen").css("min-height",window.innerHeight-$("header").outerHeight())
 
 })

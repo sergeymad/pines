@@ -1,5 +1,58 @@
 @use 'sass:math'
 @use 'sass:color'
-
 @import config
+header
+  padding: 18px
+  ul.menu
+    margin: 0
+    li
+      list-style-type: none
+    a
+      padding: 11px
+      border-top: 2px solid rgba(0,0,0,0)
+      margin: 5px
+      text-transform: uppercase
+      font-size: 12px
+      font-weight: 400
+      &:hover
+        border-top-color: $accent
+  .phone
+    font-weight: 700
+    svg
+      margin-right: 10px
+    path
+      transition: all .5s ease
+    &:hover
+      path
+        fill: $accent !important
+.first_screen
+  min-height: 100vh
+  position: relative
+  clip-path: polygon(0% 0%, 100% 0.29%, 100% 80%, 50% 100%, 0% 80%)
+  &:before
+    content: ""
+    display: block
+    width: 100%
+    height: 100%
+    position: absolute
+    left: 0
+    top: 0
+    background: linear-gradient(rgba(0, 0, 0, 0) 0% ,rgba(145, 183, 55, 0) 0.01%,#91B737 100%)
+  h1
+    position: absolute
+    top: 30%
+    left: 50%
+    transform: translateY(-50%) translateX(-50%)
+    z-index: 1
+    color: #ffffff
+    text-transform: uppercase
+  .upper
+    position: absolute
+    font-size: 46px
+    right: 0
+    left: auto
+  .lower
+    font-size: 190px
+    font-weight: 700
+
 @import 'blocks/**/*'
