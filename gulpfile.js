@@ -47,6 +47,7 @@ function scripts() {
 			performance: { hints: false },
 			plugins: [
 				new webpack.ProvidePlugin({ $: 'jquery', jQuery: 'jquery', 'window.jQuery': 'jquery' }), // jQuery (npm i jquery)
+				new webpack.ProvidePlugin({ 'owl.carousel2': 'owlCarousel' }), // jQuery (npm i jquery)
 			],
 			module: {
 				rules: [

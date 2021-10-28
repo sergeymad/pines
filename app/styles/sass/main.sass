@@ -1,6 +1,7 @@
 @use 'sass:math'
 @use 'sass:color'
 @import config
+@import owl.css
 header
   padding: 18px
   background-color: #ffffff
@@ -83,6 +84,8 @@ section.popular
   .sect_title
     text-align: center
     color: #f8f8f8
+  .product
+    margin: auto
 .product
   max-width: 270px
   width: 100%
@@ -166,6 +169,7 @@ section.popular
       font-weight: 700
       margin-bottom: 30px
     .text
+      text-align: justify
       font-size: 14px
 .hr
   margin: auto
@@ -175,6 +179,7 @@ section.popular
     font-weight: 700
     font-size: 24px
   .columned_text
+    text-align: justify
     columns: 2 auto
     font-size: 14px
     line-height: 24px
@@ -194,6 +199,7 @@ section.popular
     .text
       font-size: 14px
       line-height: 24px
+      text-align: justify
     h3
       font-size: 18px
       font-weight: 700
@@ -282,6 +288,62 @@ footer
     text-align: center
     margin-bottom: 60px
 
+.sandwich *
+  display: block
+  height: 3px
+  width: 100%
+  background-color: #333
+
+
+.sandwich::after, .sandwich::before
+  content: ""
+  height: 3px
+  display: block
+  width: 100%
+  background-color: #333
+
+
+.sandwich::after
+  position: absolute
+  transition: all .5s ease
+  top: 0
+
+
+.sandwich span
+  position: absolute
+  top: 50%
+  transform: translateY(-50%)
+  transition: all .5s ease
+
+
+.sandwich::before
+  position: absolute
+  top: 100%
+  transform: translateY(-100%)
+  transition: all .5s ease
+
+
+.sandwich.active::before
+  position: absolute
+  top: 33%
+  transform: translateY(50%) rotate(45deg)
+
+
+.sandwich.active::after
+  top: 50%
+  transform: translateY(-50%) rotate(-45deg)
+
+
+.sandwich.active span
+  opacity: 0
+
+.sandwich
+  max-width: 25px
+  min-width: 25px
+  height: 20px
+  position: relative
+  display: none
+
 @media screen and (max-width: 1200px)
   .popular
     .product
@@ -293,10 +355,121 @@ footer
   .first_screen h1
     top: 35%
 @media screen and (max-width: 992px)
+  header
+    position: relative
+    nav
+      display: none
+      position: absolute
+      left: 0
+      top: 100%
+      width: 100%
+      background-color: #ffffff
+      border-top: 1px solid #efefef
+      ul.menu
+        margin-left: 0
+        padding-left: 0
+        a
+          padding: 5px
+          padding-left: 25px
+          margin: 0
+          display: block
+          border-bottom: 1px solid #efefef
+      .wrapper
+        flex-direction: column
+  .sandwich
+    display: block
   .popular
     .product
       &:nth-of-type(3)
         display: none
   .first_screen
     clip-path: none
+  .description
+    .left
+      max-width: 100%
+      h3
+        text-align: center
+        font-size: 18px
+    .right
+      display: none
+  .columns_text
+    .columned_text
+      column-count: 1
+    .sect_title
+      font-size: 18px
+      text-align: center
+  .hr
+    svg
+      max-width: 100%
+  .additional_description
+    .left
+      max-width: 100%
+      h3
+        font-size: 18px
+        text-align: center
+    .right
+      display: none
+  .advantages .adv_list
+    flex-wrap: wrap
+    .item
+      margin-bottom: 15px
+  .first_screen
+    min-height: 60vh
+    h1
+      top: 15%
+    .lower
+      font-size: 95px
+    .upper
+      font-size: 23px
+  .footer_wrap
+    flex-wrap: wrap
+
+    .logo
+      order: 1
+    .icon_list
+      order: 2
+    .copyright
+      order: 3
+      margin: auto
+      text-align: center
+  .categories
+    margin-bottom: 0
+    .page_title
+      display: none
+    .page_subtitle
+      display: none
+    .filters
+      flex-direction: column
+      justify-content: space-around
+      position: fixed
+      top: 130px
+      left: 0%
+      transform: translateX(-100%)
+      transition: all .5s ease
+      .item
+        margin: 0
+      .trigger
+        max-width: 40px
+        padding: 10px
+        border-radius: 0 5px 5px 0
+        border: 1px solid #fff
+        border-left: 0
+        background-color: $accent
+        position: absolute
+        left: 100%
+        z-index: 2
+        top: 40px
+        svg
+          display: block
+          width: 20px
+          path
+            fill: #fff
+      &.active
+        transform: translateX(0%)
+@media screen and (max-width: 480px)
+  header .phone
+    .number
+      display: none
+  .footer_wrap
+    justify-content: space-around
 @import 'blocks/**/*'
